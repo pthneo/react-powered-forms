@@ -1,0 +1,7 @@
+src/
+example.tsx
+.*
+rollup.config.js
+tsconfig.json
+jest.config.js
+docs/
