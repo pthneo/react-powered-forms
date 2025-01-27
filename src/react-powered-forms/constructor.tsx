@@ -8,6 +8,7 @@
 "use client";
 
 import React, { Component, ReactElement, ReactNode, useState } from "react";
+import { Field, FieldClass } from "./types";
 
 /**
  * 
@@ -36,8 +37,7 @@ export type Metadata = {
 
 export type Container = {
     formData?: JSON;
-    submit?: ReactElement
-
+    onSubmit?: () => {};
 
     /*
      * 
@@ -73,18 +73,21 @@ export type Form = {
 export default function FormConstructor({ submit, autosave = false, onAutosave, }: Container ) {
   // Sets the initial state of the form 
   const [metadata, setMetadata] = useState<ReactPoweredFormMetaData>({});
-  const [form, setForm] = useState<
+  const [formFields, setFormFeilds] = useState<Field[]>([]);
 
+  
 
   if (autosave && !onAutosave) {
     throw new Error("onAutosave function needs to be provided when autosaving is enabled.")
   }
 
 
-
+      
     // Read the initial 
 
 
+
+    
     function autoSave() {
         // Take the form data, debounce for 500ms
         // Save to state.
@@ -94,9 +97,27 @@ export default function FormConstructor({ submit, autosave = false, onAutosave, 
 
     }
 
+
+  function addField(position: number, field: FieldClass) {
+    const newField: Field = {
+      id: crypto.randomUUID(),
+      label: "New Field",
+      type: field,
+    }
+
+    if (newField.type === "input") {
+      newField.placeholder = "Enter text here";
+    }
+
+  }
+
+
   return (
     <>
-      onSubmit={} }
+      <section>
+        {FormData.}
+        <h2>Add Field</h2>
+      </section>
     </>
   )
 }
@@ -136,4 +157,12 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
     }
     return this.props.children;
   }
+}
+
+export function SubmitButton() {
+  return (
+    <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+      Submit
+    </button>
+  )
 }

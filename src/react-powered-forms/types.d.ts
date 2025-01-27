@@ -1,11 +1,27 @@
 
-
+/**
+ * The field variant, being one of the following:
+ * "input": a text input. The numChars determines the height of the textbox. 
+ * "radio": a set of radio buttons. Only 1 response allowed. options sets the selections available.
+ * "checkbox": a set of checkboxes. Any number of responses allowed. options sets the selections available.
+ * "email": an email input. Email validation included by default.
+ * "password": a password input. Hidden input included by default.
+ * "phone": a phone input. Phone/area code validation included by default.
+ * "dropdown": a dropdown box. Only 1 response allowed. options sets the selections available.
+ * "slider": a slider. range sets the accepted range.
+ * "payment": a payment area. Includes the credit card fields by default.
+ * "date": a date select field. dateRange sets the accepted range.
+ * "address": an address field. Includes the address fields separate by default.
+ * "legal": a legal text field. legalText sets the required info.
+ * "number": a number box. range sets the accepted range.
+ */
+export type Variant = "input" | "radio" | "checkbox" | "email" | "password" | "phone" | "dropdown" | "slider" | "payment" | "date" | "address" | "legal" | "number"
 
 export type Field = {
     /**
      * Unique identifier of the field.
      */
-    id: number;
+    id: UUID;
   
     /**
      * Label of the field, displayed above. If undefined, it will not be shown.
@@ -14,7 +30,7 @@ export type Field = {
   
     /**
      * Placeholder value shown in the field. Only applicable on "password", "input",
-     * "phone", "payment", "email", "discount" and "address" fields.
+     * "phone", "email", "discount", "dropdown" and "address" fields.
      */
     placeholder?: string;
   
@@ -25,28 +41,15 @@ export type Field = {
     defaultValue?: string;
   
     /**
-     * The field type, being one of the following:
-     * "input": a text input. The numChars determines the height of the textbox. 
-     * "radio": a set of radio buttons. Only 1 response allowed. options sets the selections available.
-     * "checkbox": a set of checkboxes. Any number of responses allowed. options sets the selections available.
-     * "email": an email input. Email validation included by default.
-     * "password": a password input. Hidden input included by default.
-     * "phone": a phone input. Phone/area code validation included by default.
-     * "dropdown": a dropdown box. Only 1 response allowed. options sets the selections available.
-     * "slider": a slider. range sets the accepted range.
-     * "payment": a payment area. Includes the credit card fields by default.
-     * "date": a date select field. dateRange sets the accepted range.
-     * "address": an address field. Includes the address fields separate by default.
-     * "legal": a legal text field. legalText sets the required info.
-     * "number": a number box. range sets the accepted range.
+     * The field class
      */
-    type: "input" | "radio" | "checkbox" | "email" | "password" | "phone" | "dropdown" | "slider" | "payment" | "date" | "address" | "legal" | "number"
+    type: Variant;
   
     /**
      * The options available for selection. Only applicable on "radio", "dropdown"
      * and "checkbox" fields.
      */
-    options: string[]
+    options?: string[]
   
     /**
      * Whether the field is optional or not.
