@@ -8,32 +8,10 @@
 "use client";
 
 import React, { Component, ReactElement, ReactNode, useState } from "react";
-import { Field, FieldClass } from "./types";
+import { Field } from "./types";
+import { cn } from "./utils";
 
-/**
- * 
- */
-export type Metadata = {
-  title?: string;
-  description?: string;
 
-  reCAPTCHA?: boolean;
-
-  /**
-   * Whether payment is required for this 
-   */
-  payment?: boolean;
-
-  /**
-   * Whether tax is included in the tallies and costs.
-   */
-  taxIncluded?: boolean;
-
-  /**
-   * Whether discount field is to be shown.
-   */
-  discountShown?: boolean;
-}
 
 export type Container = {
     formData?: JSON;
@@ -51,15 +29,8 @@ export type Schema = {
   ...
 }
 
-export type Form = {
-  metadata?: Metadata,
-  form: {
 
-  } | null;
-  
-}
-
-
+{ submit, autosave = false, onAutosave, }: Container
 
 
 
@@ -70,7 +41,7 @@ export type Form = {
  * const [metadata, setMetadata] = useState<>
  */
 
-export default function FormConstructor({ submit, autosave = false, onAutosave, }: Container ) {
+export default function FormConstructor( ) {
   // Sets the initial state of the form 
   const [metadata, setMetadata] = useState<ReactPoweredFormMetaData>({});
   const [formFields, setFormFeilds] = useState<Field[]>([]);
@@ -113,12 +84,9 @@ export default function FormConstructor({ submit, autosave = false, onAutosave, 
 
 
   return (
-    <>
-      <section>
-        {FormData.}
-        <h2>Add Field</h2>
-      </section>
-    </>
+    <div className={cn("border-b", className)}>
+      {children}
+    </div>
   )
 }
 

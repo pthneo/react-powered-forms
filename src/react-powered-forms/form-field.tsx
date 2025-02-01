@@ -1,10 +1,6 @@
-import { Variant } from "./types";
-import { getToday } from "./utils";
+import { FieldVariant } from "./types"; // why do i need types here?
 
-/**
- * @class
- */
-class FormField {
+export class FormFieldClass {
   /**
    * Unique identifier of the field.
    */
@@ -30,7 +26,7 @@ class FormField {
   /**
    * The field class
    */
-  type: Variant;
+  type: FieldVariant;
 
   /**
    * The options available for selection. Only applicable on "radio", "dropdown"
@@ -77,7 +73,7 @@ class FormField {
    * on the "legal" field. text is the text visible, whilst checkbox if true
    * shows a checkbox the user must click (if required is true).
    */
-  legalText?: { text: string; checkbox: boolean; required?: boolean };
+  legalText?: { text: string; checkbox: boolean };
 
   /**
    * The password requirements for a "password" field.
@@ -110,11 +106,12 @@ class FormField {
    */
   conditional?: { field: number; condition: string };
 
-  constructor(type: Variant) {
+  constructor(type: FieldVariant, colSpan: 1 | 2) {
     this.id = crypto.randomUUID();
     this.type = type;
     this.label = "New Field";
     this.required = true;
+    this.colSpan = colSpan;
 
     if (type === "input") {
       this.placeholder = "Enter text here";
@@ -154,10 +151,18 @@ class FormField {
       this.options = ["Option 1", "Option 2", "Option 3"];
     }
 
-    if (type === "date") {
-      //
+    if (type === "legal") {
+      this.legalText = { text: "I agree to the terms and conditions", checkbox: true };
     }
 
+    if (type === "password") {
+      this.passwordRequirements = {
+        symbols: false,
+        numbers: false,
+        capitals: false,
+        length: 8,
+      };
+    }
   }
 
   setDefaultValue(value: string) {
@@ -192,11 +197,52 @@ class FormField {
     }
   }
 
-  update(updates: Partial<FormField>) {
-    Object.assign(this, updates);
+  setNumChars(numChars: number) {
+    if (this.type === "input") {
+      if (!Number.isInteger(numChars)) {
+        throw new Error("Number of characters must be an integer.");
+      }
+      this.numChars = numChars;
+    } else {
+      throw new Error("Number of characters can only be set on input fields.");
+    }
   }
 
-  alterType(type: Variant) {
+  setDateRange(start: string, end: string) {
+    if (this.type === "date") {
+      if (!start.match(/^\d{4}-\d{2}-\d{2}$/) || !end.match(/^\d{4}-\d{2}-\d{2}$/)) {
+        throw new Error("Date range must be in the format YYYY-MM-DD.");
+      }
+      this.dateRange = { start, end };
+    } else {
+      throw new Error("Date range can only be set on date fields.");
+    }
+  }
+
+  setRange(start: number, end: number) {
+    if (this.type === "number" || this.type === "slider") {
+      if (!Number.isInteger(start) || !Number.isInteger(end)) {
+        throw new Error("Range must be integers for number and slider fields.");
+      }
+      this.range = { start, end };
+    } else {
+      throw new Error("Range can only be set on number and slider fields.");
+    }
+  }
+
+  setConditional(field: number, condition: string) {
+    this.conditional = { field, condition };
+  }
+
+  setLegalText(text: string, checkbox: boolean) {
+    if (this.type === "legal") {
+      this.legalText = { text, checkbox };
+    } else {
+      throw new Error("Legal text can only be set on legal fields.");
+    }
+  }
+
+  alterType(type: FieldVariant) {
     const previousType = this.type;
     this.type = type;
 
@@ -210,6 +256,9 @@ class FormField {
     ) {
       this.options = ["Option 1", "Option 2", "Option 3"];
     }
+
+
+    // ...
   }
 
   addOption(option: string) {
@@ -233,3 +282,4 @@ class FormField {
     }
   }
 }
+
