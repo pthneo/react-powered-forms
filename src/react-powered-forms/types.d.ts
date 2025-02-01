@@ -18,7 +18,7 @@ import { FormFieldClass } from "./form-field";
  */
 export type FieldVariant = "input" | "radio" | "checkbox" | "email" | "password" | "phone" | "dropdown" | "slider" | "payment" | "date" | "address" | "legal" | "number"
 
-export type FormField = typeof FormFieldClass;
+export type FormField = InstanceType<typeof FormFieldClass>;
 
 export type FormIOField= FormField & {
   /**
