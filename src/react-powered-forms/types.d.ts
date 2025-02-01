@@ -20,6 +20,13 @@ export type FieldVariant = "input" | "radio" | "checkbox" | "email" | "password"
 
 export type FormField = typeof FormFieldClass;
 
+export type FormIOField= FormField & {
+  /**
+   * The index of the field in the form.
+   */
+  index: number;
+}
+
 /**
  * 
  */
@@ -33,6 +40,10 @@ export type FormMetadata = {
    * The description of the form.
    */
   description?: string;
+
+  /**
+   * The 
+   */
 
   reCAPTCHA?: boolean;
 
@@ -50,4 +61,14 @@ export type FormMetadata = {
    * Whether discount field is to be shown.
    */
   discountShown?: boolean;
+}
+
+export type Schema = {
+  ...
+}
+
+export type Form = {
+  metadata?: FormMetadata,
+  schema?: JSON,
+  form: FormIOField[]
 }

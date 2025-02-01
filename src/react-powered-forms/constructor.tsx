@@ -25,9 +25,7 @@ export type Container = {
 
 }
 
-export type Schema = {
-  ...
-}
+
 
 
 { submit, autosave = false, onAutosave, }: Container
