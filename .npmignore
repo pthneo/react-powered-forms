@@ -5,3 +5,4 @@ rollup.config.js
 tsconfig.json
 jest.config.js
 docs/
+components.json

@@ -19,11 +19,30 @@
     "postversion": "git push && git push --tags"
   },
   "peerDependencies": {
+    "@hookform/resolvers": "^3.10.0",
+    "@radix-ui/react-checkbox": "^1.1.3",
+    "@radix-ui/react-dialog": "^1.1.5",
+    "@radix-ui/react-label": "^2.1.1",
+    "@radix-ui/react-popover": "^1.1.5",
+    "@radix-ui/react-scroll-area": "^1.2.2",
+    "@radix-ui/react-slider": "^1.2.2",
+    "@radix-ui/react-slot": "^1.1.1",
+    "@radix-ui/react-tooltip": "^1.1.7",
+    "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "cmdk": "^1.0.0",
+    "json-schema-to-zod": "^2.6.0",
+    "lucide-react": "^0.474.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-hook-form": "^7.54.2",
+    "react-phone-number-input": "^3.4.11",
+    "sonner": "^1.7.4",
     "tailwind": "^4.0.0",
-    "tailwind-merge": "^3.0.1"
+    "tailwind-merge": "^3.0.1",
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^3.24.1",
+    "zod-to-json-schema": "^3.24.1"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^28.0.2",
@@ -59,7 +78,8 @@
   },
   "homepage": "https://github.com/pthneo/react-powered-forms#readme",
   "dependencies": {
-    "json-schema-to-zod": "^2.6.0",
-    "zod-to-json-schema": "^3.24.1"
+    "@radix-ui/react-select": "^2.1.5",
+    "@radix-ui/react-separator": "^1.1.1",
+    "@radix-ui/react-switch": "^1.1.2"
   }
 }
