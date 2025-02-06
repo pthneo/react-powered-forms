@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "name": "react-powered-forms",
   "version": "0.1.0",
   "description": "...",
