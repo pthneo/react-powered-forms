@@ -3,20 +3,15 @@
   "version": "0.1.0",
   "description": "...",
   "main": "dist/index.js",
-  "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
   "files": [
-    "dist"
+    "dist/*.js",
+    "dist/*.d.ts"
   ],
   "scripts": {
-    "build": "rollup -c",
-    "test": "jest",
-    "lint": "eslint src/**/*.{ts,tsx}",
-    "prepare": "npm run build",
-    "prepublishOnly": "npm test && npm run lint",
-    "preversion": "npm run lint",
-    "version": "npm run format && git add -A src",
-    "postversion": "git push && git push --tags"
+    "build": "bun build --target=node ./src/index.ts --outfile=dist/index.js && bun run build:declaration",
+    "build:declaration": "tsc --emitDeclarationOnly --project tsconfig.types.json",
+    "postbuild": "rimraf tsconfig.types.tsbuildinfo"
   },
   "peerDependencies": {
     "@hookform/resolvers": "^3.10.0",
@@ -32,7 +27,7 @@
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
     "json-schema-to-zod": "^2.6.0",
-    "lucide-react": "^0.474.0",
+    "lucide-react": "^0.475.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.54.2",
@@ -42,21 +37,20 @@
     "tailwind-merge": "^3.0.1",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^3.24.1",
-    "zod-to-json-schema": "^3.24.1"
+    "zod-to-json-schema": "^3.24.1",
+    "@radix-ui/react-select": "^2.1.5",
+    "@radix-ui/react-separator": "^1.1.1",
+    "@radix-ui/react-switch": "^1.1.2"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^28.0.2",
-    "@rollup/plugin-node-resolve": "^16.0.0",
-    "@rollup/plugin-typescript": "^12.1.2",
-    "@testing-library/react": "^16.2.0",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
     "eslint": "^9.19.0",
     "eslint-plugin-tailwindcss": "^3.18.0",
     "jest": "^29.7.0",
-    "rollup": "^4.32.1",
     "typescript": "^5.7.3",
-    "typescript-eslint": "^8.22.0"
+    "typescript-eslint": "^8.22.0",
+    "bun-types": "latest"
   },
   "keywords": [
     "react",
@@ -67,7 +61,7 @@
     "forms",
     "typescript"
   ],
-  "author": "Ben Schenk",
+  "authors": ["Ben Schenk", "Mittun Sudhahar"],
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -76,10 +70,5 @@
   "bugs": {
     "url": "https://github.com/pthneo/react-powered-forms/issues"
   },
-  "homepage": "https://github.com/pthneo/react-powered-forms#readme",
-  "dependencies": {
-    "@radix-ui/react-select": "^2.1.5",
-    "@radix-ui/react-separator": "^1.1.1",
-    "@radix-ui/react-switch": "^1.1.2"
-  }
+  "homepage": "https://forms.reactpowered.com/"
 }

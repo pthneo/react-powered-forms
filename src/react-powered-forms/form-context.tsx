@@ -18,7 +18,7 @@ export const FormProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }
     <FormContext.Provider value={{ metadata, setMetadata, fields, setFields }}>
       {children}
     </FormContext.Provider>
-  );
+  ); 
 };
 
 export const useFormEditor = () => {

@@ -1,25 +1,31 @@
 {
-    "compilerOptions": {
-      "target": "es5",
-      "module": "esnext",
-      "lib": ["dom", "esnext"],
-      "jsx": "react",
-      "declaration": true,
-      "declarationDir": "dist",
-      "strict": true,
-      "moduleResolution": "node",
-      "allowSyntheticDefaultImports": true,
-      "esModuleInterop": true,
-      "skipLibCheck": true,
-      "forceConsistentCasingInFileNames": true,
-      "outDir": "dist",
-      "rootDir": "src",
-      "baseUrl": ".",
-      "paths": {
-        "@/*": ["./src/react-powered-forms/*"]
-      }
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "baseUrl": "./",
+    "paths": { 
+      "@/*": ["src/*"]
     },
-    "include": ["src"],
-    "exclude": ["node_modules", "dist", "examples", "tests"]
-  }
-  
+    "lib": ["ESNext"],
+    "module": "esnext",
+    "target": "esnext",
+    "moduleResolution": "bundler",
+    "moduleDetection": "force",
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "composite": true,
+    "strict": true,
+    "downlevelIteration": true,
+    "skipLibCheck": true,
+    "jsx": "react-jsx",
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowJs": true,
+    "types": [
+      "bun-types"
+    ]
+  },
+  "include": [
+    "src/**/*.ts"
+  ]
+}

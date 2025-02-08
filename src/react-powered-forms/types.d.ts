@@ -32,17 +32,12 @@ export type FormIOField= FormField & {
  */
 export type FormMetadata = {
   /**
-   * The title of the form.
+   * Form identifier.
    */
-  title?: string;
+  id: string;
 
   /**
-   * The description of the form.
-   */
-  description?: string;
-
-  /**
-   * The 
+   * Whether a recaptcha challenge is required.
    */
 
   reCAPTCHA?: boolean;
@@ -63,8 +58,10 @@ export type FormMetadata = {
   discountShown?: boolean;
 }
 
-export type Schema = {
-  ...
+export type Blueprint = {
+  metadata: JSON,
+  schema: JSON,
+  form: JSON
 }
 
 export type Form = {
