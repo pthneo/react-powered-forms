@@ -1,28 +1,24 @@
 import { FormProvider } from "./form-context";
-import { FormIOField, FormMetadata, Schema } from "./types";
-import { cn } from "./utils";
+import { FormIOField, FormMetadata, Schema, Styles } from "./types";
+import { cn } from "./modules/utils";
 import React, { Component, ReactElement, ReactNode, useState } from "react";
 import ErrorBoundary from "./error-boundary";
 
 export type FormEditorProps = {
-  className?: string;
-  children?: ReactNode;
+  styles: Styles;
+  onSubmit?: (input: any) => void;
 }
 
-const FormEditor = ({className, children}: FormEditorProps): React.JSX.Element => {
-
-  // Retrieve JSON
-  // Set JSON
-
-  
-
+const FormEditor = ({styles, onSubmit}: FormEditorProps): React.JSX.Element => {
   return (
-    <ErrorBoundary className={className}>
+    <ErrorBoundary className={styles.container}>
       <FormProvider>
-        <div className={cn("", className)}>
-          {children}
+        <div className={cn("h-full w-full", styles.container)}>
+          <FormConstructor styles={styles} onSubmit={onSubmit}/>
         </div>
       </FormProvider>
     </ErrorBoundary>
   )
 }
+
+export default FormEditor;

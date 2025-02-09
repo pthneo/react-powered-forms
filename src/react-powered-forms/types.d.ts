@@ -69,3 +69,18 @@ export type Form = {
   schema?: JSON,
   form: FormIOField[]
 }
+
+/**
+ * The style object to be passed to ....
+ */
+export type EditorStyles = {
+  container: string,
+  label: string,
+  //...
+}
+
+export type ViewerStyles = {
+  container: string,
+  label: string,
+  //...
+}

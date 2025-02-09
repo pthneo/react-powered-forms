@@ -4,12 +4,12 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex sm:min-h-[91vh] min-h-[88vh] flex-col items-center justify-center text-center px-2 py-8">
+    <div className="flex sm:min-h-[91vh] min-h-[88vh] flex-col items-center mt-20 sm:mt-0 sm:justify-center text-center px-2 py-8">
       <h1 className="text-5xl font-bold mb-4 sm:text-7xl">
-        React <span className="text-primary">Powered</span>{" "}
+        React Powered <span className="text-primary">Forms</span>{" "}
       </h1>
       <h1 className="text-3xl font-bold mb-4 sm:text-5xl">
-        A free, open-source library of complex components.
+        A free, open-source form-editor module. 
       </h1>
       <p className="mb-8 sm:text-md max-w-[800px] text-muted-foreground">
         With a focus on accessibility and performance, React Powered is the

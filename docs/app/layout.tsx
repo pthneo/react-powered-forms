@@ -19,9 +19,9 @@ const codeFont = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AriaDocsLite - Template",
+  title: "React Powered Forms",
   description:
-    "This comprehensive documentation template, crafted with Next.js and available as open-source, delivers a sleek and responsive design, tailored to meet all your project documentation requirements.",
+    "React Powered Forms is a free, open-source form-editor module for React.",
 };
 
 export default function RootLayout({

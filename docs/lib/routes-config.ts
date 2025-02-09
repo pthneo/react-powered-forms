@@ -26,11 +26,11 @@ export const ROUTES: EachRoute[] = [
     ],
   },
   {
-    title: "Server Actions",
-    href: "/server-actions",
+    title: "Functions",
+    href: "/functions",
     noLink: true,
     items: [
-      { title: "getSession", href: "/getSession" },
+      { title: "getSchema", href: "/getSchema" },
       { title: "getToken", href: "/getToken" },
     ],
   },
