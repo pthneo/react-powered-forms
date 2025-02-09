@@ -1,4 +1,4 @@
-import { FormFieldClass } from "./form-field";
+import { FormFieldClass } from "./components/form-field";
 
 /**
  * The field variant, being one of the following:
@@ -20,16 +20,6 @@ export type FieldVariant = "input" | "radio" | "checkbox" | "email" | "password"
 
 export type FormField = InstanceType<typeof FormFieldClass>;
 
-export type FormIOField= FormField & {
-  /**
-   * The index of the field in the form.
-   */
-  index: number;
-}
-
-/**
- * 
- */
 export type FormMetadata = {
   /**
    * Form identifier.
@@ -40,38 +30,60 @@ export type FormMetadata = {
    * Whether a recaptcha challenge is required.
    */
 
-  reCAPTCHA?: boolean;
+  reCAPTCHA: boolean;
 
   /**
    * Whether payment is required for this 
    */
-  payment?: boolean;
+  payment: boolean;
 
   /**
    * Whether tax is included in the tallies and costs.
    */
-  taxIncluded?: boolean;
+  taxIncluded: boolean;
 
   /**
    * Whether discount field is to be shown.
    */
-  discountShown?: boolean;
+  discountShown: boolean;
 }
 
 export type Blueprint = {
+  /**
+   * The form metadata in JSON format.
+   */
   metadata: JSON,
+
+  /**
+   * The zod schema in JSON format, to be translated using json-to-zod-schema
+   */
   schema: JSON,
+
+  /**
+   * The form fields in JSON format.
+   */
   form: JSON
 }
 
-export type Form = {
-  metadata?: FormMetadata,
+export type FormEditorState = {
+  /**
+   * The form metadata.
+   */
+  metadata: FormMetadata,
+
+  /**
+   * The zod schema (generated when the form is saved).
+   */
   schema?: JSON,
-  form: FormIOField[]
+
+  /**
+   * The form fields.
+   */
+  form: FormField[]
 }
 
 /**
- * The style object to be passed to ....
+ * The style object to be passed to the form editor component.
  */
 export type EditorStyles = {
   container: string,
@@ -79,6 +91,9 @@ export type EditorStyles = {
   //...
 }
 
+/**
+ * The style object to be passed to the form viewer component.
+ */
 export type ViewerStyles = {
   container: string,
   label: string,

@@ -1,10 +1,15 @@
-import { FieldVariant } from "./types"; // why do i need types here?
+import { FieldVariant } from "../types"; 
 
 export class FormFieldClass {
   /**
    * Unique identifier of the field.
    */
   id: string;
+
+  /**
+   * The index of the field in the form.
+   */
+  index: number;
 
   /**
    * Label of the field, displayed above. If undefined, it will not be shown.
@@ -106,8 +111,15 @@ export class FormFieldClass {
    */
   conditional?: { field: number; condition: string };
 
-  constructor(type: FieldVariant, colSpan: 1 | 2) {
+  /**
+   * Constructor for the FormField class.
+   * @param type the variant of field
+   * @param index where the field is in the form
+   * @param colSpan whether it spans 1 or 2 columns
+   */
+  constructor(type: FieldVariant, index: number, colSpan: 1 | 2) {
     this.id = crypto.randomUUID();
+    this.index = index;
     this.type = type;
     this.label = "New Field";
     this.required = true;

@@ -1,8 +1,8 @@
 src/
-example.tsx
-.*
+.gitignore
 rollup.config.js
 tsconfig.json
 jest.config.js
 docs/
+tests/
 components.json

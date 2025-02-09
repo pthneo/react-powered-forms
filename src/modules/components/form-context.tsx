@@ -1,5 +1,5 @@
 import * as React from "react";
-import { FormField, FormMetadata } from "./types";
+import { FormField, FormMetadata } from "../types";
 
 export type FormContext = {
   metadata: FormMetadata;
@@ -11,14 +11,21 @@ export type FormContext = {
 const FormContext = React.createContext<FormContext | null>(null);
 
 export const FormProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
-  const [metadata, setMetadata] = React.useState<FormMetadata>({});
+  const [metadata, setMetadata] = React.useState<FormMetadata>({
+    id: crypto.randomUUID(),
+    reCAPTCHA: false,
+    payment: false,
+    taxIncluded: false,
+    discountShown: false,
+  });
+
   const [fields, setFields] = React.useState<FormField[]>([]);
 
   return (
     <FormContext.Provider value={{ metadata, setMetadata, fields, setFields }}>
       {children}
     </FormContext.Provider>
-  ); 
+  );
 };
 
 export const useFormEditor = () => {

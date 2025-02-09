@@ -1,16 +1,15 @@
 "use client"
 
-import { FormProvider } from "./form-context";
-import { Blueprint, FormIOField, FormMetadata, ViewerStyles } from "./types";
-import { cn } from "./modules/utils";
-import React, { Component, ReactElement, ReactNode, useState } from "react";
-import ErrorBoundary from "./error-boundary";
-import Form from "./form";
+import { Blueprint, ViewerStyles } from "./types";
+import { cn } from "./components/utils";
+import React from "react";
+import ErrorBoundary from "./components/error-boundary";
+import Form from "./components/form";
 
 export type FormViewerProps = {
   styles: ViewerStyles;
-  blueprint?: Blueprint
-  onSubmit?: (input: any) => void;
+  blueprint: Blueprint
+  onSubmit: (input: any) => void;
 }
 
 const FormViewer = ({styles, blueprint, onSubmit}: FormViewerProps): React.JSX.Element => {
